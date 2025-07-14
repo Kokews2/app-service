@@ -1,0 +1,37 @@
+{
+  "screens": [
+    {
+      "id": "1",
+      "name": "Screen 1",
+      "isActive": true,
+      "items": [
+        {
+          "id": "1",
+          "name": "Gauge 1",
+          "type": "gauge",
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 200,
+          "options": {
+            "title": "Gauge 1",
+            "value": 50
+          }
+        },
+        {
+          "id": "1",
+          "name": "Gauge 1",
+          "type": "gauge",
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 200,
+          "options": {
+            "title": "Gauge 1",
+            "value": 50
+          }
+        }
+      ]
+    }
+  ]
+}

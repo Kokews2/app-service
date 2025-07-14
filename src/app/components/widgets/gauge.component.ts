@@ -1,5 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { EChartsCoreOption } from 'echarts/core';
+
+import { HmiGaugeOptions } from '../../models/items/gauge.model';
+import { HmiItem } from '../../models/item.model';
 
 @Component({
   selector: 'app-gauge-widget',
@@ -8,7 +12,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
   template: `
     <div
       echarts
-      [options]="options"
+      [options]="gaugeOptions"
       class="widget"
       style="height: 200px;"
     ></div>
@@ -21,21 +25,27 @@ import { NgxEchartsModule } from 'ngx-echarts';
     `,
   ],
 })
-export class GaugeWidgetComponent implements OnInit {
-  @Input() value!: number;
-  @Input() title!: string;
+export class GaugeWidgetComponent implements HmiItem, OnInit {
+  @Input() id!: string;
+  @Input() name!: string;
+  @Input() type!: string;
+  @Input() x!: number;
+  @Input() y!: number;
+  @Input() width!: number;
+  @Input() height!: number;
+  @Input() options!: HmiGaugeOptions;
 
-  options: any;
+  gaugeOptions!: EChartsCoreOption;
 
   ngOnInit() {
-    this.options = {
-      title: { text: this.title, left: 'center' },
+    this.gaugeOptions = {
+      title: { text: this.options.title, left: 'center' },
       series: [
         {
           type: 'gauge',
           progress: { show: true },
           detail: { valueAnimation: true, formatter: '{value}%' },
-          data: [{ value: this.value }],
+          data: [{ value: this.options.value }],
         },
       ],
     };

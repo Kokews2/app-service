@@ -4,7 +4,7 @@ import { GaugeWidgetComponent } from '../components/widgets/gauge.component';
 @Injectable({ providedIn: 'root' })
 export class DynamicComponentService {
   private componentMap: Record<string, Type<any>> = {
-    GaugeWidget: GaugeWidgetComponent,
+    gauge: GaugeWidgetComponent,
   };
 
   getComponent(type: string): Type<any> | null {

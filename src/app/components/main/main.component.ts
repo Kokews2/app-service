@@ -23,12 +23,11 @@ export class MainComponent implements OnInit {
   constructor(
     private screenService: FileSystemService,
     private dynamicService: DynamicComponentService
-  ) {}
+  ) { }
 
   async ngOnInit() {
     await this.screenService.load();
-    console.log('Loaded screens:', this.screenService.screens);
-    this.renderWidgets(this.screenService.getScreenById('main')?.items || []);
+    this.renderWidgets(this.screenService.getScreenById('1')?.items || []);
   }
 
   renderWidgets(widgets: HmiItem[]) {
@@ -39,7 +38,7 @@ export class MainComponent implements OnInit {
       const componentType = this.dynamicService.getComponent(widget.type);
       if (componentType) {
         const componentRef = container.createComponent(componentType);
-        Object.assign(componentRef.instance, widget.options);
+        Object.assign(componentRef.instance, widget);
       }
     });
   }

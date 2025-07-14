@@ -7,16 +7,49 @@ import { HmiScreen } from '../models/screen.model';
 export class FileSystemService {
   private config: RuntimeConfig | undefined;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   async load(): Promise<void> {
-    this.http
-      .get<RuntimeConfig>('assets/runtime-config.json')
+    /*this.http
+      .get<RuntimeConfig>('./assets/runtimeConfig.json', { responseType: 'json' })
       .subscribe((data) => {
         this.config = data;
       });
+    */
 
-    console.log('FileSystemService loaded with config:', this.config);
+    this.config = {
+      screens: [{
+        id: '1',
+        name: 'Screen 1',
+        isActive: true,
+        items: [{
+          id: '1',
+          name: 'Gauge 1',
+          type: 'gauge',
+          x: 100,
+          y: 100,
+          width: 200,
+          height: 200,
+          options: {
+            title: 'Gauge 1',
+            value: 50
+          }
+        },
+        {
+          id: '1',
+          name: 'Gauge 1',
+          type: 'gauge',
+          x: 100,
+          y: 100,
+          width: 200,
+          height: 200,
+          options: {
+            title: 'Gauge 1',
+            value: 50
+          }
+        }]
+      }]
+    }
   }
 
   get screens(): HmiScreen[] {
