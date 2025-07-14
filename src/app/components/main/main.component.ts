@@ -23,7 +23,7 @@ export class MainComponent implements OnInit {
   constructor(
     private screenService: FileSystemService,
     private dynamicService: DynamicComponentService
-  ) { }
+  ) {}
 
   async ngOnInit() {
     await this.screenService.load();
@@ -38,6 +38,7 @@ export class MainComponent implements OnInit {
       const componentType = this.dynamicService.getComponent(widget.type);
       if (componentType) {
         const componentRef = container.createComponent(componentType);
+        console.log('Created component:', componentRef.instance);
         Object.assign(componentRef.instance, widget);
       }
     });

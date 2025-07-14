@@ -1,0 +1,36 @@
+<!-- Tabla SVG dinámica con paginación y ordenamiento -->
+
+<svg [attr.width]="tableWidth" [attr.height]="tableHeight" xmlns="http://www.w3.org/2000/svg">
+  <!-- Encabezados -->
+  <g *ngFor="let col of columns; let i = index" (click)="sortBy(col)" style="cursor: pointer">
+    <rect [attr.x]="i * cellWidth" y="0" [attr.width]="cellWidth" [attr.height]="cellHeight" fill="#3f51b5" />
+    <text [attr.x]="i * cellWidth + 10" [attr.y]="cellHeight / 2 + 5" fill="white" font-weight="bold"
+      dominant-baseline="middle">
+      {{ col }}
+      <tspan *ngIf="sortedColumn === col">
+        {{ sortDirection === 'asc' ? '▲' : '▼' }}
+      </tspan>
+    </text>
+  </g>
+
+  <!-- Filas de datos paginados -->
+  <g *ngFor="let row of paginatedData; let rowIndex = index">
+    <g *ngFor="let col of columns; let colIndex = index">
+      <rect [attr.x]="colIndex * cellWidth" [attr.y]="(rowIndex + 1) * cellHeight" [attr.width]="cellWidth"
+        [attr.height]="cellHeight" fill="#f5f5f5" stroke="#ccc" />
+      <text [attr.x]="colIndex * cellWidth + 10" [attr.y]="(rowIndex + 1.5) * cellHeight" fill="black"
+        dominant-baseline="middle">
+        {{ row[col] }}
+      </text>
+    </g>
+  </g>
+</svg>
+
+<!-- Controles de paginación -->
+<div class="pagination-controls">
+  <button (click)="prevPage()" [disabled]="currentPage === 0">Anterior</button>
+  <span>Página {{ currentPage + 1 }}</span>
+  <button (click)="nextPage()" [disabled]="(currentPage + 1) * pageSize >= sortedData.length">
+    Siguiente
+  </button>
+</div>

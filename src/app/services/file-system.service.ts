@@ -7,7 +7,7 @@ import { HmiScreen } from '../models/screen.model';
 export class FileSystemService {
   private config: RuntimeConfig | undefined;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   async load(): Promise<void> {
     /*this.http
@@ -18,38 +18,40 @@ export class FileSystemService {
     */
 
     this.config = {
-      screens: [{
-        id: '1',
-        name: 'Screen 1',
-        isActive: true,
-        items: [{
-          id: '1',
-          name: 'Gauge 1',
-          type: 'gauge',
-          x: 100,
-          y: 100,
-          width: 200,
-          height: 200,
-          options: {
-            title: 'Gauge 1',
-            value: 50
-          }
-        },
+      screens: [
         {
           id: '1',
-          name: 'Gauge 1',
-          type: 'gauge',
-          x: 100,
-          y: 100,
-          width: 200,
-          height: 200,
-          options: {
-            title: 'Gauge 1',
-            value: 50
-          }
-        }]
-      }]
-    }
+          name: 'Screen 1',
+          isActive: true,
+          items: [
+            {
+              id: '1',
+              name: 'Table 1',
+              type: 'table',
+              x: 100,
+              y: 100,
+              width: 200,
+              height: 200,
+              options: {
+                columns: ['ID', 'Nombre', 'Edad', 'Ciudad'],
+                data: [
+                  { ID: 1, Nombre: 'Juan', Edad: 28, Ciudad: 'Madrid' },
+                  { ID: 2, Nombre: 'María', Edad: 34, Ciudad: 'Barcelona' },
+                  { ID: 3, Nombre: 'Pedro', Edad: 22, Ciudad: 'Valencia' },
+                  { ID: 4, Nombre: 'Lucía', Edad: 29, Ciudad: 'Sevilla' },
+                  { ID: 5, Nombre: 'Carlos', Edad: 31, Ciudad: 'Bilbao' },
+                  { ID: 6, Nombre: 'Ana', Edad: 25, Ciudad: 'Zaragoza' },
+                  { ID: 7, Nombre: 'Jorge', Edad: 27, Ciudad: 'Granada' },
+                  { ID: 8, Nombre: 'Sofía', Edad: 30, Ciudad: 'Toledo' },
+                  { ID: 9, Nombre: 'Laura', Edad: 33, Ciudad: 'Málaga' },
+                  { ID: 10, Nombre: 'Daniel', Edad: 26, Ciudad: 'Vigo' },
+                ],
+              },
+            },
+          ],
+        },
+      ],
+    };
   }
 
   get screens(): HmiScreen[] {
