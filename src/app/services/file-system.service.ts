@@ -45,6 +45,8 @@ export class FileSystemService {
                   { ID: 8, Nombre: 'Sofía', Edad: 30, Ciudad: 'Toledo' },
                   { ID: 9, Nombre: 'Laura', Edad: 33, Ciudad: 'Málaga' },
                   { ID: 10, Nombre: 'Daniel', Edad: 26, Ciudad: 'Vigo' },
+                  { ID: 11, Nombre: 'Raúl', Edad: 35, Ciudad: 'Alicante' },
+                  { ID: 12, Nombre: 'Clara', Edad: 24, Ciudad: 'Córdoba' }
                 ],
               },
             },

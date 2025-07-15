@@ -6,7 +6,7 @@ import { TableComponent } from '../components/table/table.component/table.compon
 export class DynamicComponentService {
   private componentMap: Record<string, Type<any>> = {
     gauge: GaugeWidgetComponent,
-    table: TableComponent,
+    table: TableComponent
   };
 
   getComponent(type: string): Type<any> | null {
